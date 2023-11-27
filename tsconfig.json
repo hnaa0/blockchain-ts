@@ -1,0 +1,11 @@
+// jsconfig.json 파일이 있으면 ts 프로젝트임을 나타냄
+// 프로젝트를 컴파일할 때 필요한 루트 파일과 컴파일러 옵션 지정
+{
+  "include": ["src"],
+  "compilerOptions": {
+    // js파일이 생성될 디렉터리를 지정
+    "outDir": "build",
+    // 컴파일 할 js 버전 지정
+    "target": "ES6"
+  }
+}
