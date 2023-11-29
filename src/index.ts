@@ -1,8 +1,7 @@
-// 노드모듈에 설치된 js모듈을 어떻게 사용할까?
-// myPackage.js를 노드모듈이라고 가정했을 때, ts는 myPackage의 정의 파일을 찾을 수 없음 = 이게 뭔지 모름
-// => ts에게 설명해줘야 함 => myPackage.d.ts
+// js프로젝트에 ts를 적용할 때
+// allowjs: true로 설정하면 정의 파일이 없어도 ts가 호출 시그니처를 추론하게 되고 js와 ts 섞어쓸 수 있음
 
-import { init, exit } from "myPackage";
+import { init, exit } from "./myPackage";
 
-init({ url: "true" });
+init();
 exit(3);
