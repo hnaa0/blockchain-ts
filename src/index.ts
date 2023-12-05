@@ -1,7 +1,23 @@
-// js프로젝트에 ts를 적용할 때
-// allowjs: true로 설정하면 정의 파일이 없어도 ts가 호출 시그니처를 추론하게 되고 js와 ts 섞어쓸 수 있음
+// 블록체인?: 말 그대로 여러 개의 블록이 사슬처럼 묶인 것
+import crypto from "crypto";
 
-import { init, exit } from "./myPackage";
+interface BlockShape {
+  hash: string;
+  prevHash: string;
+  height: number;
+  data: string;
+}
 
-init();
-exit(3);
+class Block implements BlockShape {
+  public hash: string;
+  constructor(
+    public prevHash: string,
+    public height: number,
+    public data: string
+  ) {
+    this.hash = Block.calculateHash(prevHash, height, data);
+  }
+  static calculateHash(prevHash: string, height: number, data: string) {
+    const toHash = `${prevHash}${height}${data}`;
+  }
+}
