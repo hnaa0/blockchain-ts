@@ -1,4 +1,9 @@
 // 블록체인?: 말 그대로 여러 개의 블록이 사슬처럼 묶인 것
+// 원래는 crypto의 정의파일을 읽어올 수 없어서 에러가 나지만 ts-node를 설치할 때
+// crypto.d.ts가 자동으로 node_modules/@types/node 경로에 생성됐기 때문에 에러는 안 뜸
+
+// https://github.com/DefinitelyTyped/DefinitelyTyped
+// definitelyTyped?: 굉장히 큰 레포지토리로 npm에 존재하는 거의 모든 패키지들에 대한 타입 정의로 이루어져있음
 import crypto from "crypto";
 
 interface BlockShape {
@@ -19,5 +24,6 @@ class Block implements BlockShape {
   }
   static calculateHash(prevHash: string, height: number, data: string) {
     const toHash = `${prevHash}${height}${data}`;
+    return crypto.createHash("sha256").update(toHash).digest("hex");
   }
 }
